@@ -1,0 +1,79 @@
+Note: All changes were made to the .dat timing files in Kanonizo/data/real/; none of the .dat timing files in Diatoms/ were modified
+
+Gradebook:
+	9	gradebook.TestGradeBookCreator
+	22	gradebook.TestBeforeAllTests
+	40	gradebook.TestGradeBook
+	47	gradebook.TestGradeBookCreatorWithFullDataSet
+	
+Sudoku:
+	15	test.sudoku.TestSudoku
+	17	testSolveWithDepthFirstSearch
+	19	testPropagateConstraints_InsufficientToSolvePuzzle
+	-Note: test case #11 in the timing .dat file was not in the expected location in the .xml. However, there was a test case at the beginning of the .xml that was not present at the first position in the .dat; however, because its timing information was identical to that of test case #11 in the .dat, I assumed that this out-of-order test case in the .xml was for some reason placed at position #11 by the .dat. Thus, I left case #11 alone in the timing .dat file.
+
+TransactionManager:
+	-Note: all test cases in the xml were present within the timing .dat. However, the positions of cases 1 and 2 in the .xml were swapped in the .dat, as were the positions of cases 8 and 10. I left them alone.
+
+LoopFinder:
+	9	finder.LoopFinderTest
+
+Reminder:
+	3	reminder.TestBeforeAllTests
+	7	reminder.TestReminderCreator
+	12	reminder.TestReminder
+
+JDepend:
+	-Note: I found no relationships whatsoever between the timings .dat file (JDTime.dat) and the xml file (diatoms.timing.TestJDepend.timings). A very large number of the execution time number vaules in the .dat were present nowhere within the xml, although from looking at the first dozen entries in each, there does seem to be a rough pattern of large and small values in each. This leads me to conclude that the xml and .dat data were produced by different executions of the same JDepend test suite.
+	       -Potential course of action: manually construct a new timing datafile from the values in the xml, using the pattern of the elements in the .dat. However, because there are at least 11 missing entries in the .dat file and none of the timings are exactly the same between the xml and the old .dat, there is a reasonable probability of swaps existing within the xml propagating undetected into the new .dat.
+	       -Improved course of action: manually reconstruct, but use the name-index mapping found in the serialized setCover .xmls to ensure that the test cases with requirements are all in their correct locations.
+	
+	9	jdepend.framework.ConstraintTest
+	11	jdepend.framework.ClassFileParserTest
+	13	jdepend.framework.ComponentTest
+	14	jdepend.framework.CycleTest
+	21	jdepend.framework.FileManagerTest
+	25	jdepend.framework.CollectAllCyclesTest
+	26	jdepend.framework.PropertyConfiguratorTest
+	41	jdepend.framework.ExampleTest
+	48	jdepend.framework.MetricTest
+	52	jdepend.framework.FilterTest
+	53	jdepend.framework.JarFileParserTest
+	
+
+DataStructures:
+	3	boundedStack.uniqueBoundedStackAxiomTest
+	4	stackRetObject.Teststack2
+	11	junit.framework.TestSuite@1ff5ea7
+	21	identifier.TestIdentifierTable
+	22	boundedStack.uniqueBoundedStackTest
+	28	stackRetObject.Teststack1oldMethod
+	40	junit.framework.TestSuite@1c672d0
+	44	junit.framework.TestSuite@1eec612
+	48	stackRetObject.Teststack1
+	54	junit.framework.TestSuite@e2eec8
+	57	junit.framework.TestSuite@aa9835
+	58	junit.framework.TestSuite@9f2a0b
+	61	junit.framework.TestSuite@19bd03e
+	62	stackRetObject.Teststack2oldMethod
+	63	identifier
+	66	identifier.TestIdentifier
+
+ReducePrioritize:
+	1	diatoms.reduce.TestSetCover
+	6	redupr.TestSetCover
+	7	redupr.TestReduceUsingHarroldGuptaSoffa
+	26	diatoms.reduce.TestReduceUsingDelayedGreedy
+	32	testReduceUsingDGHugeExampleTime
+	34	diatoms.reduce.TestReduceUsingKWay
+	42	testReduceUsingDGHugeExampleCoverage
+	47	testReduceUsingDGHugeExampleRatio
+	52	redupr.TestReduceUsingKWay
+	64	diatoms.reduce.TestReduceUsingHarroldGuptaSoffa
+	70	redupr.TestReduceUsingDelayedGreedy
+	75	diatoms.reduce.TestReduceUsingGreedy
+	76	redupr.TestReduceUsingGreedy
+	
+
+
+
