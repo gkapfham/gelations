@@ -1,0 +1,30 @@
+#!/bin/bash
+
+for config in $( ls /home/cs2/conrada/Kanonizo/src/prioritizer/configs/real_JD_IVM_* )
+do
+
+echo "java gelations.PerformExperiment $config"
+java gelations.PerformExperiment $config
+
+done
+
+
+for config in $( ls /home/cs2/conrada/Kanonizo/src/prioritizer/configs/real_JD_SIM_* )
+do
+
+echo "java gelations.PerformExperiment $config"
+java gelations.PerformExperiment $config
+
+done
+
+
+for config in $( ls /home/cs2/conrada/Kanonizo/src/prioritizer/configs/real_JD_SM_* )
+do
+
+echo "java gelations.PerformExperiment $config"
+java gelations.PerformExperiment $config
+
+done
+
+
+exit 0

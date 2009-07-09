@@ -1,0 +1,30 @@
+#!/bin/bash
+
+for config in $( ls /home/cs2/conrada/Catterwampus/configs/real_SR_IVM_* )
+do
+
+echo "java gelations.PerformExperiment $config"
+java gelations.PerformExperiment $config
+
+done
+
+
+for config in $( ls /home/cs2/conrada/Catterwampus/configs/real_SR_SIM_* )
+do
+
+echo "java gelations.PerformExperiment $config"
+java gelations.PerformExperiment $config
+
+done
+
+
+for config in $( ls /home/cs2/conrada/Catterwampus/configs/real_SR_SM_* )
+do
+
+echo "java gelations.PerformExperiment $config"
+java gelations.PerformExperiment $config
+
+done
+
+
+exit 0
