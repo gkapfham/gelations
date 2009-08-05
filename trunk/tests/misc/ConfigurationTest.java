@@ -1,9 +1,10 @@
 /**
  * 
  */
-package gelations;
+package unfinished;
 
 import static org.junit.Assert.*;
+import gelations.Configuration;
 
 import org.junit.After;
 import org.junit.Before;
