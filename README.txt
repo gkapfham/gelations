@@ -1,3 +1,5 @@
+note: this document is unfinished!
+
 GELATIONS 1.0 (GEnetic aLgorithm bAsed Test suIte prIOritizatioN System)
 ========================================
 
