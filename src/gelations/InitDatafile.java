@@ -35,7 +35,7 @@ public class InitDatafile {
 	Configuration config = new Configuration(args);
 	
 	WriteResults.writeHeader(config);
-	WriteResults.writeHeaderStag(config);
+	//WriteResults.writeHeaderStag(config);
 	
     }
         
