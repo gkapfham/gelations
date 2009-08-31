@@ -32,7 +32,7 @@ public class InitializeParentSelector {
 	switch (op) {
 	case 0: parentSelector 
 		= new ParentSelectorRou(seed); break;
-	case 1: parentSelector 
+	case 1: parentSelector 	
 		= new ParentSelectorTru(seed); break;
 	case 2: parentSelector 
 		= new ParentSelectorTou(seed); break;

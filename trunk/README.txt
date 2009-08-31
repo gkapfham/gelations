@@ -1,5 +1,3 @@
-note: this document is unfinished!
-
 GELATIONS 1.0 (GEnetic aLgorithm bAsed Test suIte prIOritizatioN System)
 ========================================
 
@@ -25,15 +23,74 @@ Coverage and timing datafiles are plaintext and tab-delimited. Provided in this 
 USING DIFFERENT CONFIGURATIONS
 ========================================
 
-If you want to perform your own empirical study, 
+If you want to perform an empirical study using different configurations of the genetic algorithm, use the InitSingleDatafile and RunPrioritizer classes located in the gelations package. InitSingleDatafile requires a path to the location where the results of the experiment are to be stored. This class simply erases any pre-existing file at the path, creates a new enpty file, and writes the appropriate header to the top of the file. RunPrioritizer executes the prioritizer for a given configuration of the genetic algorithm. The argument list for RunPrioritizer is: 
 
-Implemented as a part of GELATIONS are the partially-mapped crossover (PMX), cycle crossover (CX), order crossover (OX1), order based crossover (OX2), position based crossover (POS), maximal preservative crossover (MPX), and voting recombination (VR) crossover operators. For mutation, the displacement mutation (DM), exchange mutation (EM), insertion mutation (ISM), simple inversion mutation (SIM), inversion mutation (IVM), and scramble mutation (SM) operators have been implemented. These operators are described in detail in "Genetic Algorithms for the Travelling Salesman Problem: A Review of Representations and Operators" by P. LARRANAGA, C.M.H. KUIJPERS, R.H. MURGA, I. INZA and S. DIZDAREVIC. 
+[int] dataformat (should always be 1, when using the plaintext data format described above), 
+[int] mutation operator, 
+[int] crossover operator, 
+[int] selection operators, 
+[int] fitness transform (this option is deprecated, should always be set to 1; transformations are now incorporated into the selection operators themselves), 
+[double] mutation rate (0,1), 
+[double] child representation (0,1), 
+[int] population size, 
+[int] max execution time (in ms; algorithm will terminate and return best solution after this time is reached), 
+[double] target fitness (0,1) (algorithm will terminate and return best solution after a solution is produced whose fitness value meets or exceeds this parameter), 
+[int] max stagnancy (number of successive generations that no new individual is produced whose fitness exceeds that of the most fit individual thus far encountered; if this value is exceeded, the algorithm will terminate and return the best solution), 
+[int] metric (this should always be set to 0, unless using custom metrics not included in the package by default), 
+[String] path to datafile containing coverage information, 
+[String] path to datafile containing timing information, 
+[String] path to datafile containing a list of seeds, 
+[String] path to file into which output should be written, 
+[int] number of repetitions (each repetition will use the next seed from the seed datafile)
+
+All arguments should be supplies on the command line as space-separated entities. For the mutation, crossover, and selection operators, each operator is represented by an integer. A mapping of the integers to operators follows:
+
+-------------------
+Crossover Operators
+-------------------
+0 = cycle crossover (CX)
+1 = maximal preservative crossover (MPX)
+2 = order crossover (OX1)
+3 = order based crossover (OX2)
+4 = partially-mapped crossover (PMX)
+5 = position based crossover (POS)
+6 = voting recombination (VR
+
+------------------
+Mutation Operators
+------------------
+0 = displacement mutation (DM)
+1 = exchange mutation (EM)
+2 = insertion mutation (ISM)
+3 = inversion mutation (IVM)
+4 = simple inversion mutation (SIM)
+5 = scramble mutation (SM)
+
+-------------------
+Selection Operators
+-------------------
+0 = roulette selection (ROU)
+1 = 50% truncation selection (TRU50)
+2 = binary tournament selection (TOU2)
+3 = 3-tournament selection (TOU3)
+4 = 4-tournament selection (TOU4)
+5 = 5-tournament selection (TOU5)
+6 = 40% truncation selection (TRU40)
+7 = 60% truncation selection (TRU60)
+8 = roulette selection with linear ranking fitness transformation (ROUL)
+9 = roulette selection with exponential fitness transformation (ROUE)
+
+The crossover and mutation operators are described in detail in "Genetic Algorithms for the Travelling Salesman Problem: A Review of Representations and Operators" by P. LARRANAGA, C.M.H. KUIJPERS, R.H. MURGA, I. INZA and S. DIZDAREVIC. For more information about the selection operators, consult "Threshold selecting: best possible probability distribution for crossover selection in genetic algorithms" by Jorg Lassig, Karl Heinz Hoffmann, and Mihaela Enachescu, "From mating pool distributions to model overfitting" by Claudio F. Lima, Fernando G. Lobo, and Martin Pelikan, and "Comparison of performance between different selection strategies on simple genetic algorithms" by Jinghui Zhong, Xiaomin Hu, Jun Zhang, and Min Gu.
 
 
 EXTENDING GELATIONS AND COMPILING FROM SOURCE
 ========================================
 
+This program was developed using version 1.6 of the Java compiler. Use earlier versions at your own risk. To build the program, simply execute the command "javac src/gelations/*.java -d bin/" from the root directory of the svn repository.
 
+To add your own operators, you will need to modify the source of two class, depending on the type of operator that you are adding. First, you will need to add a new case in the switch statement of the initialization class mapping an integer, passed on the command line, to your new operator class. The initialization class for selection operators is InitializeParentSelector.java, for crossover operators is InitializeCrossoverOperators.java, and for mutation operators is InitializeMutationOperators.java. Your new operator class must extend the abstract class ParentSelector.java, CrossoverOperator.java, or MutationOperator.java, depending on the operator being implemented. New metrics can similarly be added by modifying MetricSelector.java and extending MetricCalculator.
+
+In addition to modifying the initialization class, the class Configuration.java must also be modified with the abbreviation for the new operator. The String arrays SELECTION_OPS, CROSSOVER_OPS, MUTATION_OPS, and METRIC contain the abbreviations for each of these operators or metrics. The integer used to represent the operator is also used to select the correct abbreviations from these arrays, so when a new operator is added, these arrays must be updated with the desired abbreviation at the appropriate index.
 
 
 COPYRIGHT AND ACKNOWLEDGEMENTS
