@@ -186,11 +186,15 @@ public class Prioritizer {
 	  +population.getBestIndividual()
 	  .getStringRepresentation()+" "+ targetFitness);
 	*/
-		
+	
+	/*
 	while(population.getMaxFitness() < targetFitness && 
 	      System.currentTimeMillis()-startTime < maxTime &&
 	      stagnancy < maxStag) {
-			
+		*/
+	// temporary condition: just do 400 generations
+	while(generations < 400) {
+		
 	    generations++;
 			
 	    // make a copy of the current population
@@ -283,7 +287,7 @@ public class Prioritizer {
 	//	(this step shouldn't be necessary anymore, but 
 	//       it can't hurt)
 	//fitnessCalculator.computeFitness(bestIndividual);
-	
+	System.out.println("best fitness: "+bestFitness);
 	return bestIndividual;
 	
     }

@@ -66,7 +66,10 @@ public class WriteResults {
     }
 	
     public static void writeHeaderStag(Configuration config) {
-		
+	
+    	/*
+    	 * stagnancy stuff doesn't work right now 
+    	 
 	String filename = config.getOutputFileName()+".stag";
 	//try {
 	(new File(filename)).delete();
@@ -93,7 +96,7 @@ public class WriteResults {
 	    ex.printStackTrace();
 			
 	}
-		
+		*/
     }
 	
     /**
