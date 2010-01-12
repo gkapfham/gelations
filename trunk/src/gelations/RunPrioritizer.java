@@ -54,7 +54,7 @@ public class RunPrioritizer {
 	    
 	    prioritizer = new Prioritizer(configuration, rep);
 	    prioritizer.runPrioritization();
-	    prioritizer.writeResults();
+	    //prioritizer.writeResults();
 	    
 	}
 	
