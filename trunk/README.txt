@@ -43,7 +43,7 @@ If you want to perform an empirical study using different configurations of the 
 [String] path to file into which output should be written, 
 [int] number of repetitions (each repetition will use the next seed from the seed datafile)
 
-All arguments should be supplies on the command line as space-separated entities. For the mutation, crossover, and selection operators, each operator is represented by an integer. A mapping of the integers to operators follows:
+All arguments should be supplied on the command line in order as space-separated entities. For the mutation, crossover, and selection operators, each operator is represented by an integer. A mapping of the integers to operators follows:
 
 -------------------
 Crossover Operators
