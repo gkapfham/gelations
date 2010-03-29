@@ -22,7 +22,7 @@ public class RunPrioritizer {
     
     public static void main(String[] args) {
 	
-	if (args.length < TOTAL_ARGS) {
+	if (args.length != TOTAL_ARGS) {
 	    
 	    System.out.println("Incorrect arguments provided. "
 			       +"Proper arguments are:");
